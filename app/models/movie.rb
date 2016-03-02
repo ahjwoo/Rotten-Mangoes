@@ -14,6 +14,5 @@ protected
       errors.add(:release_date, "should be in the past") if release_date > Date.today
     end
   end
-
     
 end

@@ -1,4 +1,6 @@
 class Movie < ActiveRecord::Base
+  mount_uploader :avatar, AvatarUploader
+# this adds a method avatar_url, provides ways to access it. YOU SMART.
 
   has_many :reviews
 
@@ -6,14 +8,12 @@ class Movie < ActiveRecord::Base
   validates :director, presence: true
   validates :runtime_in_minutes, numericality: {only_integer: true}
   validates :description, presence: true
-  validates :poster_image_url, presence: true
+  # validates :poster_image_url, presence: true
   validates :release_date, presence: true
   validate :release_date_is_in_the_past
 
   def review_average
-    if reviews.any?
       reviews.sum(:rating_out_of_ten)/reviews.size
-    end
   end
 
 

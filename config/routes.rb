@@ -13,6 +13,8 @@ RottenMangoes::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'movies#index'
 
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -54,7 +56,9 @@ RottenMangoes::Application.routes.draw do
   #   end
   #   resources :posts, concerns: :toggleable
   #   resources :photos, concerns: :toggleable
-
+  namespace :admin do
+    resources :users
+  end
   # Example resource route within a namespace:
   #   namespace :admin do
   #     # Directs /admin/products/* to Admin::ProductsController

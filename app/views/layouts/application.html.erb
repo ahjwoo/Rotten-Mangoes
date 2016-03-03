@@ -10,6 +10,8 @@
 
 </head>
 <body>
+<%= switch_user_select %>
+
 <% flash.each do |key, value| %>
   <%= content_tag(:div, value) %>
 <% end %>

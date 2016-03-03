@@ -1,2 +1,98 @@
+<%= link_to "Back to Movies", movies_path %><br> 
+
 <h2>Admin Space</h2>
 <hr>
+<h5>Users list</h5>
+
+<%= paginate @users %>
+<div class="panel panel-default">
+ <table class="table">
+   <th>User ID</th>
+   <th>Name</th>
+   <th>Email</th>
+   <th>Admin</th>
+   <th>Created</th>
+   <th>Updated</th>
+   <th>Edit</th>
+   <th>Delete</th>
+   
+   <% @users.each do |user| %>
+   <tr>
+   <td><%= user.id %></td>
+   <td><%= user.full_name %></td>
+   <td><%= user.email %></td>
+   <% if user.admin %>
+   <td><i class="fa fa-check"></i></td>
+   <% else %>
+   <td><i class="fa fa-close"></i></td>
+   <% end %>
+   <td><%= user.created_at.strftime('%B %Y') %></td>
+   <td><%= user.updated_at.strftime('%B %Y') %></td>
+   <td><%= link_to "Edit", edit_admin_user_path(user.id) %></a></td>
+   <td><%= link_to "Delete", admin_user_path(user.id), method: :delete, data: { confirm: "Are you sure?" } %></td>
+   </tr>
+   <% end %>
+ </table>
+</div>
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+<div class="container">
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Create Users</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Create Users below</h4>
+        </div>
+        <div class="modal-body">
+         
+      <%= form_for([:admin, @user]) do |f| %>        
+      <div>
+        <%= f.label :email %><br>
+        <%= f.text_field :email %>
+      </div>
+      <div>
+        <%= f.label :firstname, "First Name" %><br>
+        <%= f.text_field :firstname %>
+      </div>
+      <div>
+        <%= f.label :lastname, "Last Name" %><br>
+        <%= f.text_field :lastname %>
+      </div>
+      <div>
+        <%= f.label :password %><br>
+        <%= f.password_field :password %>
+      </div>
+      <div>
+        <%= f.label :password_confirmation %><br>
+        <%= f.password_field :password_confirmation %>
+      </div>
+      <div>
+        <%= f.label :admin %><br>
+        <%= f.check_box :admin %>
+      </div>
+      <div><%= f.submit "Submit" %></div>
+      <% end %>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+

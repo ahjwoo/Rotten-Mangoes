@@ -43,6 +43,7 @@
 <%= link_to "Submit a movie", new_movie_path %> 
 
 <hr>
+<div>
   <% @movies.each do |movie| %>
    <% if movie.avatar? %>
     <%= link_to image_tag(movie.avatar_url(:about_page)), movie_path(movie) %>
@@ -55,6 +56,7 @@
     <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
     <p><%= movie.description %></p>
     <hr>
+</div>
 <% end %>
 
 

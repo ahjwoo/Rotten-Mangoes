@@ -32,7 +32,7 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
-
+gem 'pry'
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -46,3 +46,5 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # gem 'debugger', group: [:development, :test]
 gem 'carrierwave'
 gem 'rmagick'
+gem 'faker'
+gem 'kaminari'

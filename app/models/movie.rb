@@ -19,7 +19,6 @@ class Movie < ActiveRecord::Base
   def self.search(query)
     # where(:title, query) -> This would return an exact match of the query
     where("title like ? OR director like ? OR runtime_in_minutes < ? OR runtime_in_minutes > ?", "%#{query}%", "%#{query}%", 90, 120)
-
   end
   
 protected

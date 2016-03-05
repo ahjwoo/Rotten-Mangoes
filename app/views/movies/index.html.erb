@@ -1,20 +1,38 @@
-<%= link_to "Submit a movie", new_movie_path %><br>
-<br>
-    <p>Movie/Director Search</p>
+<%= link_to "Submit a movie", new_movie_path %>
 
-      <form class="navbar-form navbar-left" role="search">
-        <%= form_tag(movies_path, :method => "get", class: "navbar-form", id: "search-form") do %>
-       <div class="input-append">
-        <%= text_field_tag :search, params[:search], placeholder: "Search Movies/Directors" %><br>
-        <%= select_tag :duration, options_for_select(["Under 90 minutes", "Between 90 and 120 minutes", "Over 120 minutes"], params[:duration]) %><br>
-      <button class="btn btn-default" type="submit">Search</button>
+  
+
+  <%= form_tag(movies_path, :method => "get", id: "search-form") do %>
+    
+    <div class="row">
+    <div class="col-md-4">
+
+      <label for="inputEmail" class="col-lg-2 control-label">Movie/Director</label>
+      
+        <div class="form-group">    
+          <%= text_field_tag :search, params[:search], placeholder: "Search Movies/Directors", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <label for="select" class="col-lg-2 control-label">Duration</label>
+          <%= select_tag :duration, options_for_select(["Select a duration", "Under 90 minutes", "Between 90 and 120 minutes", "Over 120 minutes"], params[:duration]), class: "form-control", id: "select" %>
+        </div>
+
+      <div class="form-group">
+        <button type="reset" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
       </div>
-        <% end %>
-      </form><br>
+  <% end %>
+    </div>
+    <div class="col-md-8">
+    </div>
+    </div>
+
 
 
 <hr>
   <% @movies.each do |movie| %>
+  <div class="col-md-4">
    <% if movie.avatar? %>
     <%= link_to image_tag(movie.avatar_url(:about_page)), movie_path(movie) %>
     <% end %>
@@ -24,9 +42,11 @@
     <% end %>
     <h3><%= formatted_date(movie.release_date) %></h3>
     <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-    <p><%= movie.description %></p>
-    <hr>
+    <p><%= truncate(movie.description, length: 250) %></p>
+    </div>
+    
 <% end %>
+
 
 
 

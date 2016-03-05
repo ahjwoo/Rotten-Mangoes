@@ -42,8 +42,12 @@ class Admin::UsersController < ApplicationController
     if @user.destroy
       flash[:notice] = "Successfully deleted User."
       redirect_to admin_users_path
+
+        # Tell the UserMailer to send a welcome email after save
+      UserMailer.delete_user(@user).deliver
     end
-  end   
+  end
+  
 
 
   protected

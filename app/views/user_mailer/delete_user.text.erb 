@@ -1,0 +1,8 @@
+Hey, <%= @user.firstname %>
+===============================================
+ 
+Hello <%= @user.firstname %>!
+
+We are sorry to see you go!  You are welcome to sign up anytime, always :).
+
+Goodbye!

@@ -17,11 +17,6 @@ protected
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
-  #another helper method 
-  def fake_user
-    
-  end
-
   def only_for_admins
     if !current_user || !current_user.admin
       flash[:alert] = "You must be an admin to access that area."

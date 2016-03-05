@@ -1,49 +1,19 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#"><%= image_tag "Drawing (2).png", id: "rotten_logo" %></a>
-    </div>
+<%= link_to "Submit a movie", new_movie_path %><br>
+<br>
+    <p>Movie/Director Search</p>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
-      </ul>
       <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Search</button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+        <%= form_tag(movies_path, :method => "get", class: "navbar-form", id: "search-form") do %>
+       <div class="input-append">
+        <%= text_field_tag :search, params[:search], placeholder: "Search Movies/Directors" %><br>
+        <%= select_tag :duration, options_for_select(["Under 90 minutes", "Between 90 and 120 minutes", "Over 120 minutes"], params[:duration]) %><br>
+      <button class="btn btn-default" type="submit">Search</button>
+      </div>
+        <% end %>
+      </form><br>
 
-<%= link_to "Submit a movie", new_movie_path %> 
 
 <hr>
-<div>
   <% @movies.each do |movie| %>
    <% if movie.avatar? %>
     <%= link_to image_tag(movie.avatar_url(:about_page)), movie_path(movie) %>
@@ -56,8 +26,15 @@
     <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
     <p><%= movie.description %></p>
     <hr>
-</div>
 <% end %>
 
 
+
+
    
+
+<!--    Director (text)
+Duration (Dropdown with options: )
+"Under 90 minutes"
+"Between 90 and 120 minutes"
+"Over 120 minutes" -->

@@ -16,7 +16,12 @@ class Movie < ActiveRecord::Base
       reviews.sum(:rating_out_of_ten)/reviews.size
   end
 
+  def self.search(query)
+    # where(:title, query) -> This would return an exact match of the query
+    where("title like ? OR director like ? OR runtime_in_minutes < ? OR runtime_in_minutes > ?", "%#{query}%", "%#{query}%", 90, 120)
 
+  end
+  
 protected
 
   def release_date_is_in_the_past
@@ -26,3 +31,4 @@ protected
   end
     
 end
+# where("title like ? OR director like ? OR runtime_in_minutes < ? OR runtime_in_minutes > ?", "%#{query}%", "%#{query}%", 90, 120)

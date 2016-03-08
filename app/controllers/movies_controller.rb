@@ -1,7 +1,11 @@
 class MoviesController < ApplicationController
   
   def index
-    
+    # MM2
+    # 1. Having so much logic in your controller action is not good. You should put logic in your models so you can have unit tests in your models.
+    # 2. In here you should only have something like @movies = Movie.search(parms[:search], params[:duration]) and put logic in search method in Movie class
+    # 3. There is issue with the logic where you can only filter by search term or by duration, what if you want to filter by both?
+    # 4. Search should probably be in a seperate action because it's a different mode and it's easier to display search result like that
     if (params[:search]) && (params[:duration] == "Select a duration") 
       @movies = Movie.where("title like ? OR director like ?", "%#{params[:search]}%", "%#{params[:search]}%").order("created_at DESC")
     elsif params[:duration] == "Under 90 minutes"
@@ -47,6 +51,7 @@ class MoviesController < ApplicationController
   end
 
   def destroy
+    # MM3: You could have gotten away by doing Movie.find(params[:id]).destroy which is much shorter. You declared a variable that you will never use in the views.
     @movie = Movie.find(params[:id])
     @movie.destroy
     redirect_to movies_path

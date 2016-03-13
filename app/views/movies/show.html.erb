@@ -1,6 +1,6 @@
 <%= link_to "Back to Movies", movies_path %><br> 
 
-  <% if @movie.avatar? %>
+  <% if @movie.poster_image_url? %>
     <%= image_tag(@movie.poster_image_url) %>
 
   <% end %>

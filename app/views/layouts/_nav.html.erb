@@ -43,7 +43,7 @@
 
       <ul class="nav navbar-nav navbar-right">
 
-        <li><a href="#"><i class="fa fa-hand-peace-o"></i>Hi <%= current_user.firstname %></a></li>
+        <li><a href="#"><i class="fa fa-hand-peace-o"></i>Hi <% if current_user %><%= current_user.firstname %><% end %></a></li>
       </ul>
     </div>
   </div>

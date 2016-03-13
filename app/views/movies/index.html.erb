@@ -1,5 +1,3 @@
-
-
   <%= form_tag(movies_path, :method => "get", id: "search-form") do %>
     
     <div class="row">
@@ -37,9 +35,9 @@
       <%= link_to image_tag(movie.avatar_url(:about_page)), movie_path(movie)%>
       <h4><%= link_to movie.title, movie_path(movie) %></h4> 
     </a> 
-      <% if movie.reviews.any? %>
+<!--       <% if movie.reviews.any? %>
        <h6> <%=movie.review_average %>/10</h6>
-      <% end %>
+      <% end %> -->
       <h6><%= formatted_date(movie.release_date) %></h6>
     </div>
   <% end %>

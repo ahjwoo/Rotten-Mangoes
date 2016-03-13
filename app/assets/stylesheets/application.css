@@ -7029,3 +7029,6 @@ a.list-group-item-danger.active:focus {
 .carousel-inner>.item>img, .carousel-inner>.item>a>img {
     width: 100%;
 }
+
+#hearts { color: #ee8b2d;}
+#hearts-existing { color: #ee8b2d;}

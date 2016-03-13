@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
@@ -51,3 +50,5 @@ gem 'faker'
 gem 'kaminari'
 gem 'switch_user'
 gem 'devise', '~> 3.5', '>= 3.5.6'
+
+ruby '2.1.3'

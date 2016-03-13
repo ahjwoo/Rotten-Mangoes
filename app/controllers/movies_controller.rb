@@ -1,7 +1,6 @@
 class MoviesController < ApplicationController
   
   def index
-    
     if (params[:search]) && (params[:duration] == "Select a duration") 
       @movies = Movie.where("title like ? OR director like ?", "%#{params[:search]}%", "%#{params[:search]}%").order("created_at DESC")
     elsif params[:duration] == "Under 90 minutes"
@@ -55,6 +54,6 @@ class MoviesController < ApplicationController
   protected
 
   def movie_params
-    params.require(:movie).permit(:title, :release_date, :director, :runtime_in_minutes, :description, :avatar)
+    params.require(:movie).permit(:title, :release_date, :director, :runtime_in_minutes, :description, :avatar, :avatar_url)
   end
 end

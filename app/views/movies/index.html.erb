@@ -1,6 +1,4 @@
-<%= link_to "Submit a movie", new_movie_path %>
 
-  
 
   <%= form_tag(movies_path, :method => "get", id: "search-form") do %>
     
@@ -28,33 +26,87 @@
     </div>
     </div>
 
-
+<%= link_to "Submit a movie", new_movie_path %><br>
 
 <hr>
+
+<div class="movie-slider">
   <% @movies.each do |movie| %>
-  <div class="col-md-4">
-   <% if movie.avatar? %>
-    <%= link_to image_tag(movie.avatar_url(:about_page)), movie_path(movie) %>
-    <% end %>
-    <h2><%= link_to movie.title, movie_path(movie) %>  
-    <% if movie.reviews.any? %>
-      | <%=movie.review_average %>/10</h2>
-    <% end %>
-    <h3><%= formatted_date(movie.release_date) %></h3>
-    <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-    <p><%= truncate(movie.description, length: 250) %></p>
+  <div class="col-md-5">
+    <a type="button" data-toggle="modal" data-target="#movie<%= movie.id %>">
+      <%= link_to image_tag(movie.avatar_url(:about_page)), movie_path(movie)%>
+      <h4><%= link_to movie.title, movie_path(movie) %></h4> 
+    </a> 
+      <% if movie.reviews.any? %>
+       <h6> <%=movie.review_average %>/10</h6>
+      <% end %>
+      <h6><%= formatted_date(movie.release_date) %></h6>
     </div>
-    
+  <% end %>
+</div>
+
+ <% @movies.each do |movie| %>
+  <div class="modal fade" id="movie<%= movie.id %>" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&close;</button>
+          <h4 class="modal-title">Modal title</h4>
+        </div>
+        <div class="modal-body">
+          <p>One fine body…</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
 
+<style>
+    .movie-slider img {
+    height: 200px;
+    }
+</style>
 
-
-
-
+<!-- <div class="movie-slider">
    
+    <% @movies.each do |movie| %>
+      <% if movie.avatar? %>
+        <div>
+          <div class="fade">
+            <a data-toggle="modal" data-target="#movie<%= movie.id %>"><%= link_to image_tag(movie.avatar_url(:about_page)) %></a>
 
-<!--    Director (text)
-Duration (Dropdown with options: )
-"Under 90 minutes"
-"Between 90 and 120 minutes"
-"Over 120 minutes" -->
+            <span class="index-movie-title"><%= truncate(movie.title, length:20) %></span><br>
+            <%= formatted_date(movie.release_date) %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+</div>
+ -->
+<!-- Modal -->
+<!--   <% @movies.each do |movie| %>
+    <div class="modal fade" id="movie<%= movie.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <%= movie.title %>
+              </div>
+              <div class="col-sm-6">
+                <%= movie.description %>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+ -->
+
+
+
+  

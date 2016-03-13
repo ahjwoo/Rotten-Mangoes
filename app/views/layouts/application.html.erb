@@ -2,31 +2,37 @@
 <html>
 <head>
   <title>RottenMangoes</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => false %>
   <%= csrf_meta_tags %>
+  <!-- Slick -->
+<link href="http://kenwheeler.github.io/slick/slick/slick.css" rel="stylesheet"/>
+<link href="http://kenwheeler.github.io/slick/slick/slick-theme.css" rel="stylesheet"/>
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.5.9/slick.min.js"></script>
+
+
 </head>
+
 <body>
 
 <%= render 'layouts/nav' %>
 
 <div class="container">
-
-<p>Select User</p>
-<%= switch_user_select %><br>
+<!--<%= switch_user_select %>-->
 
 <% flash.each do |key, value| %>
   <%= content_tag(:div, value) %>
 <% end %>
 <%= yield %>
 
-
 </div>
 
 <hr>
 <%= render 'layouts/footer' %>
 
+<!-- Slick -->
 </body>
 </html>

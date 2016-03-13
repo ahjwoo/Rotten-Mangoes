@@ -16,34 +16,10 @@
 
 $(document).ready(function(){
   $('.movie-slider').slick({
+    slidesToShow: 6,
     slidesToScroll: 1,
-    // centerMode: true,
-    centerHeight: '100px',
-    centerPadding: '20px',
-    arrows: true,
-    infinite: true,
-    slidesToShow: 7,
-    speed: 300,
-    responsive: [
-    {
-      breakpoint: 768,
-      settings: {
-        arrows: false,
-        centerMode: true,
-        centerPadding: '40px',
-        slidesToShow: 3
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        arrows: false,
-        centerMode: true,
-        centerPadding: '40px',
-        slidesToShow: 1
-      }
-    }
-  ]
+    autoplay: true,
+    autoplaySpeed: 1500,
   });
 
 });

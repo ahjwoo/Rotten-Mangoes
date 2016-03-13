@@ -32,7 +32,7 @@
   <% @movies.each do |movie| %>
   <div class="col-md-5">
     <a type="button" data-toggle="modal" data-target="#movie<%= movie.id %>">
-      <%= link_to image_tag(movie.avatar_url(:about_page)), movie_path(movie)%>
+      <%= link_to image_tag(movie.poster_image_url), movie_path(movie)%>
       <h4><%= link_to movie.title, movie_path(movie) %></h4> 
     </a> 
 <!--       <% if movie.reviews.any? %>

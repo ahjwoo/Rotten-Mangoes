@@ -34,9 +34,9 @@ end
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'rails_12factor', group: :production
-# gem 'pg'
+gem 'pg'
 # If in development mode, comment out pg, and use sqlite3
-gem 'sqlite3'
+# gem 'sqlite3'
 # Use unicorn as the app server
 # gem 'unicorn'
 

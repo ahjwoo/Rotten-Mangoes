@@ -1604,6 +1604,8 @@ pre code {
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
+
+
 }
 @media (min-width: 768px) {
   .container {
@@ -1613,6 +1615,7 @@ pre code {
 @media (min-width: 992px) {
   .container {
     width: 970px;
+
   }
 }
 @media (min-width: 1200px) {
@@ -4187,6 +4190,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   min-height: 40px;
   margin-bottom: 21px;
   border: 1px solid transparent;
+  height: 50px;
 }
 @media (min-width: 768px) {
   .navbar {
@@ -4527,7 +4531,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #ebebeb;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #ebebeb;
+  color: #FF7F00;
+  top: 6px;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
@@ -7010,10 +7015,10 @@ a.list-group-item-danger.active:focus {
 }
 
 #rotten_logo {
-  height: 30px;
-  position: relative;
+  height: 37px;
+  position: absolute;
   display: block;
-  top: -10px;
+  top: 4px;
 }
 
 .hide-bullets {

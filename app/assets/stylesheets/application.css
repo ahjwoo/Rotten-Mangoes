@@ -7032,3 +7032,11 @@ a.list-group-item-danger.active:focus {
 
 #hearts { color: #ee8b2d;}
 #hearts-existing { color: #ee8b2d;}
+
+.uploadedImage {
+  height: 400px;
+  width: 250px;
+}
+.hearts {
+  color: red;
+}

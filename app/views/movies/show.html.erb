@@ -1,23 +1,25 @@
 <%= link_to "Back to Movies", movies_path %><br> 
 
   <% if @movie.poster_image_url? %>
-    <%= image_tag(@movie.poster_image_url) %>
+    <%= image_tag(@movie.poster_image_url, :class => "uploadedImage") %>
 
   <% end %>
 
-  <h2><%= @movie.title %> (<%= link_to "edit", edit_movie_path(@movie) %>, <%= link_to "delete", movie_path(@movie), method: :delete, data: {confirm: "you sure bruh?"} %>)  
-  <div class="container">
-  <div class="row">
-  </div>
-    <div class="row lead">
-        <div id="hearts" class="starrr"></div>
-        You gave a rating of <span id="count">0</span> star(s)
-  </div>
-</div>
+  <h2><%= @movie.title %> (<%= link_to "edit", edit_movie_path(@movie) %>, <%= link_to "delete", movie_path(@movie), method: :delete, data: {confirm: "you sure bruh?"} %>)</h2>  
+  
   <% if @movie.reviews.any? %>
-    | <%= @movie.review_average %>/10</h2>
+    <h3>Ratings: <%= @movie.review_average %>/10</h3>
   <% end %>
-  <h3><%= formatted_date(@movie.release_date) %></h3>
+  <div class="hearts">
+  <% if @movie.reviews.any? %>
+        <%= (@movie.review_average).times.collect{'♥'}.join(' ') %> 
+        <%= (10 - @movie.review_average).times.collect{'♡'}.join(' ') %>
+      <% else %>
+       <%= 10.times.collect{'♡'}.join(' ') %>
+      <% end %>
+  </div>
+ 
+  <h3>Release Date: <%= formatted_date(@movie.release_date) %></h3>
   <h4>Director: <%= @movie.director %> | <%= @movie.runtime_in_minutes %> minutes </h4>
   <p><%= @movie.description %></p>
 

@@ -1,7 +1,9 @@
 class MoviesController < ApplicationController
   
   def index
-    if (params[:search]) && (params[:duration] == "Select a duration") 
+    @movie = Movie.new
+    
+    if (params[:search]) && (params[:duration] == "Search by Duration") 
       @movies = Movie.where("title like ? OR director like ?", "%#{params[:search]}%", "%#{params[:search]}%").order("created_at DESC")
     elsif params[:duration] == "Under 90 minutes"
       @movies = Movie.where("runtime_in_minutes <= ?", 90)

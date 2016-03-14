@@ -1,6 +1,3 @@
-
-
-
 <%= form_for @movie, :html => {:multipart => true} do |f| %>
   <% if @movie.errors.any? %>
     <div>
@@ -40,10 +37,10 @@
    <%= f.label :poster_image_url %><br>
    <%= f.text_field :poster_image_url %>
   </div>
-  <div>
+<!--   <div>
     <%= f.label :avatar %><br/>
     <%= f.file_field :avatar %>
-  </div>
+  </div> -->
   
   <div>
     <%= f.submit %>

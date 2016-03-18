@@ -1,6 +1,6 @@
 == README
 
-Rotten Bananas is a movie review app inspired by Rotten Tomatoes.
+Rotten Mangoes(Bananas) is a movie review app inspired by Rotten Tomatoes.
 I used RoR, HTML, CSS, JS, jQuery.  
 
 http://rotten-bananas.herokuapp.com/

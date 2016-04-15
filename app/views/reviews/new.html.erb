@@ -1,27 +1,30 @@
 <%= link_to "Back to movie", movie_path(@movie) %><br/>
+<h2 style="text-align:center;">Write a review of <em><%= @movie.title %></em></h2>
 
-  <h2>Write a review of <em><%= @movie.title %></em></h2>
-
-    <%= form_for([@movie, @review]) do |f| %>
-      <% if @review.errors.any? %>
-        <div>
-          <%= pluralize(@review.errors.count, "error") %> prevented the review from being saved:
-          <ul>
-            <% @review.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-
-      <div>
+<%= form_for([@movie, @review]) do |f| %>
+  <% if @review.errors.any? %>
+    <div>
+      <%= pluralize(@review.errors.count, "error") %> prevented the review from being saved:
+      <ul>
+        <% @review.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="form-group">
         <%= f.label :text %><br>
-        <%= f.text_area "text" %>
+        <%= f.text_area "text", class: "form-control", style: "max-width:100%;" %>
       </div>
-      <div>
+      <div class="form-group">
         <%= f.label :rating_out_of_ten %><br>
-        <%= f.number_field :rating_out_of_ten %>
+        <%= f.number_field :rating_out_of_ten, class: "form-control" %>
       </div>
+      <div><%= f.submit "Submit", class: "btn btn-default" %></div>
+    </div>
+  <div class="col-md-3"></div>
 
-      <div><%= f.submit "Submit" %></div>
-    <% end %>
+<% end %>

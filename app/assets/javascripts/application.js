@@ -20,6 +20,35 @@ $(document).ready(function(){
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 1500,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidestoScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 1500
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidestoScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 1500
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+          slidestoScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 1500
+        }
+      }
+    ]
   });
 });
 

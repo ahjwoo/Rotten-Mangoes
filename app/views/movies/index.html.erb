@@ -1,30 +1,33 @@
+<div>
+  <h4 style="text-align:center; color:#FF8800;">Welcome to Rotten Bananas! This is a space where users can view, search, and rate movies.  Users can also add their own movies to the collection! Enjoy!</h4>
+</div>
+
+<!-- Search by movie/director -->
 <%= form_tag(movies_path, :method => "get", id: "search-form") do %>
   <div class="row">
-  <div class="col-md-4">
-
-    <label for="inputEmail" class="col-lg-2 control-label">Movie/Director</label>
-    
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <label for="inputEmail" class="col-lg-2 control-label">Movie/Director</label>  
       <div class="form-group">    
         <%= text_field_tag :search, params[:search], placeholder: "Search Movies/Directors", class: "form-control" %>
       </div>
-
+      <!-- Search by Duration of movies -->
       <div class="form-group">
         <label for="select" class="col-lg-2 control-label">Duration</label>
         <%= select_tag :duration, options_for_select(["Search by Duration", "Under 90 minutes", "Between 90 and 120 minutes", "Over 120 minutes"], params[:duration]), class: "form-control", id: "select" %>
       </div>
 
-    <div class="form-group">
-      <button type="reset" class="btn btn-default">Cancel</button>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <div class="form-group" style="text-align:center;">
+        <button type="reset" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
     </div>
-    </div>
-    </div>
+    <div class="col-md-3"></div>
+  </div>
 <% end %>
 
-    <div class="col-md-8">
-    </div>
-
 <hr>
+
 
 <div class="movie-slider">
   <% @movies.each do |movie| %>
@@ -78,16 +81,15 @@
         <div class="modal-body">
 
           <h3>Reviews of <em><%= movie.title %></em></h3>
-          <% if current_user %>
             <% movie.reviews.each do |review| %>
               <p><%= review.text %></p>
               <p><%= review.rating_out_of_ten %>/10</p>
               <small>- <% review.user.full_name %></small>
             <% end %>
-
+          <% if current_user %>
             <p><%= link_to "Write a review!", new_movie_review_path(movie) %></p>
           <% else %>
-            <p>Please <%= link_to "log in", new_session_path %> to see reviews and add your own. </p>
+            <p>Please <%= link_to "log in", new_session_path %> to add your own reviews. </p>
           <% end %>
 
         </div>
@@ -100,7 +102,6 @@
   </div>
 <% end %>
 
-<div class="container">
   
   <!-- Trigger the modal with a button -->
   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add a movie</button>
@@ -111,26 +112,26 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Create Users below</h4>
+          <h4 class="modal-title"></h4>
         </div>
-        <div class="modal-body">
-          <h1>Add Movie</h1>
+        <div class="modal-body clearfix">
+          <h1 style="text-align:center;">Add Movie</h1>
           <hr>
           <%= render 'form' %>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
         </div>
       </div>      
     </div>
   </div>
-</div>
+
 
 
 <style>
-    .movie-slider img {
+  .movie-slider img {
     height: 200px;
-    }
+  }
 </style>
 
 

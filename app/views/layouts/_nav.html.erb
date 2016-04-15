@@ -1,32 +1,14 @@
 <nav class="navbar navbar-default">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
       <a class="navbar-brand" type="button"><%= image_tag "Drawing (2).png", id: "rotten_logo" %></a>
     </div>
 
-
-<!--     <form class="navbar-form navbar-left" role="search">
-      <%= form_tag(movies_path, :method => "get", class: "navbar-form", id: "search-form") do %>
-      <div class="input-append">
-        <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search Movies" %>
-        <button class="btn btn-default" class="icon-search" type="submit">Search</button>
-      </div>
-      <% end %>
-    </form>
- -->
-      <ul class="nav navbar-nav navbar-right">
-
-        <li><a href="#"><i class="fa fa-hand-peace-o"></i>Hi <% if current_user %><%= current_user.firstname %><% end %></a></li>
-      </ul>
-    </div>
+    <ul class="nav navbar-nav navbar-right hidden-xs">
+        <li><a href="#"><i class="fa fa-hand-peace-o"></i>Hi <% if current_user %><%= current_user.firstname %><% else %>Guest<% end %></a></li>
+    </ul>
+   
   </div>
-</div>
 </nav>
 
 
